@@ -28,4 +28,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+var scope = app.Services.CreateScope();
+
 app.Run();
