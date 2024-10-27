@@ -1,5 +1,7 @@
 using API.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,5 +31,22 @@ app.UseAuthorization();
 app.MapControllers();
 
 var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<StoreContext>();
+// var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
+var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+logger.LogInformation("Hello World! Logging is {Description}.", "fun");
+
+try
+{
+    context.Database.Migrate();
+    DbInitializer.Initialize(context);
+}
+catch (Exception ex)
+{
+
+    logger.LogInformation(ex, "A problem occurred during migration");
+}
 
 app.Run();
