@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -19,6 +19,7 @@ namespace API.Data.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<long>(type: "INTEGER", nullable: false),
+                    PictureUrl = table.Column<string>(type: "TEXT", nullable: true),
                     Type = table.Column<string>(type: "TEXT", nullable: true),
                     Brand = table.Column<string>(type: "TEXT", nullable: true),
                     QuantityInStock = table.Column<int>(type: "INTEGER", nullable: false)
