@@ -1,3 +1,5 @@
+using API.Entities;
+
 namespace API.Data
 {
     public static class DbInitializer
@@ -207,7 +209,7 @@ namespace API.Data
             };
             foreach (var product in products)
             {
-                context.products.Add(product);
+                context.Products.Add(product);
             }
             context.SaveChanges();
         }
