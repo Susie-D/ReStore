@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { Products } from './products';
 
 function App() {
-  const [products, setProducts] = useState([
-    { name: 'product1', price: 100 },
-    { name: 'product2', price: 200 }
-  ]);
+  const [products, setProducts] = useState<Products[]>([]);
   const [error, setError] = useState(null);
 
   function addProduct() {
-    setProducts(preState =>
-      [...preState,
-      {
-        name: 'product' + (preState.length + 1),
-        price: (preState.length * 100) + 100
-      }
+    setProducts(prevState => [...prevState, 
+        {
+          id: prevState.length + 101,
+          name: 'product' + (prevState.length + 1),
+          price: (prevState.length * 100) + 100,
+          brand: 'some brand',
+          description: 'some description',
+          type: '',
+          pictureUrl: 'http://picsum.photos/200'
+        }
       ]
     )
   }
@@ -31,9 +33,9 @@ function App() {
     <>
       <div>
         <h1>ReStore</h1>
-        {products.map((item, index) => (
-          <ul key={index}>
-            <li>{item.name}</li>
+        {products.map(product => (
+          <ul key={product.id}>
+            <li>{product.name} - {product.price}</li>
           </ul>
         ))}
         <p></p>
