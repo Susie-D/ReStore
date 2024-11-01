@@ -46,7 +46,8 @@ try
 catch (Exception ex)
 {
 
-    logger.LogInformation(ex, "A problem occurred during migration");
+    logger.LogError(ex, "A problem occurred during migration");
+    //logger.LogInformation(ex, "A problem occurred during migration");
 }
 
 app.Run();
