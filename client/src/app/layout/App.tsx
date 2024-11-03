@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { Products } from './products';
+
+import Catalog from '../../components/catalog/Catalog';
+
+import { Products } from '../models/products';
 
 function App() {
   const [products, setProducts] = useState<Products[]>([]);
+
   const [error, setError] = useState(null);
 
   function addProduct() {
@@ -33,13 +37,7 @@ function App() {
     <>
       <div>
         <h1>ReStore</h1>
-        {products.map(product => (
-          <ul key={product.id}>
-            <li>{product.name} - {product.price}</li>
-          </ul>
-        ))}
-        <p></p>
-        <button onClick={addProduct}>Add Product</button>
+        <Catalog products={products} addProduct={addProduct}/>
       </div>
     </>
   )
