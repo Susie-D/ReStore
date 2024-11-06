@@ -1,19 +1,21 @@
-import {  Button } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Products } from "../../app/models/products";
 import ProductList from "./ProductList";
 
 
-export default function Catalog({ products, addProduct }: Props) {
+export default function Catalog() {
+
+const [products, setProducts] = useState<Products[]>([]);
+  const [error, setError] = useState(null);
+
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/products')
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => setError(error));
+  }, [])
     return <>
-        <ProductList products={products}/>
-        <Button variant="contained" onClick={addProduct}>Add Product</Button>
+        <ProductList products={products} />
     </>
-}
-
-// these properties are required
-// to be passed down from the parent component
-
-interface Props {
-    products: Products[];
-    addProduct: () => void;
 }
