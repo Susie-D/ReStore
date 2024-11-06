@@ -4,7 +4,8 @@ import './App.css'
 import Catalog from '../../components/catalog/Catalog';
 
 import { Products } from '../models/products';
-import { Typography } from '@mui/material';
+import Header from './Header';
+import { CssBaseline } from '@mui/material';
 
 function App() {
   const [products, setProducts] = useState<Products[]>([]);
@@ -37,8 +38,9 @@ function App() {
   return (
     <>
       <div>
+        <CssBaseline/>
         {(error) ? <p>An error occured</p> : <div>
-          <Typography variant='h1'>ReStore</Typography>
+          <Header/>
           <Catalog products={products} addProduct={addProduct} />
         </div>}
       </div>
