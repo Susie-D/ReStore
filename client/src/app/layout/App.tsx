@@ -15,6 +15,9 @@ function handleThemeChange()  {
   const theme = createTheme({
     palette: {
       mode: paletteType,
+      background: {
+        default: paletteType === 'light' ? 'eaeaea' : 'black'
+      }
     }
   })
   return (
