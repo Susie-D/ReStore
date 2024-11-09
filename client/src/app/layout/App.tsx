@@ -1,6 +1,6 @@
 import { Container, createTheme, CssBaseline, FormControlLabel, Switch, ThemeProvider } from '@mui/material';
 import { useState } from 'react';
-import Catalog from '../../components/catalog/Catalog';
+import { Outlet } from 'react-router-dom';
 import './App.css';
 import Header from './Header';
 
@@ -32,7 +32,7 @@ function handleThemeChange()  {
           label={darkMode ? 
           'Dark Mode' : 'Light Mode'} />
           <Container>
-            <Catalog />
+            <Outlet/>
           </Container>
         </div>
       </div>
