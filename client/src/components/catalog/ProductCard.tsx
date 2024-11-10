@@ -1,4 +1,5 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import { Products } from "../../app/models/products";
 
 export default function ProductCard({ product }: Props) {
@@ -47,7 +48,7 @@ export default function ProductCard({ product }: Props) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">View</Button>
+                <Button component={NavLink} to={`/catalog/${product.id}`} size="small">View</Button>
                 <Button size="small">Add to Cart</Button>
             </CardActions>
         </Card>
