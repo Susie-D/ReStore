@@ -48,9 +48,7 @@ export default function ProductCard({ product }: Props) {
             </CardContent>
             <CardActions>
                 <Button size="small">View</Button>
-                <Button size="small">Add to Cart
-                    Add Product
-                </Button>
+                <Button size="small">Add to Cart</Button>
             </CardActions>
         </Card>
     )

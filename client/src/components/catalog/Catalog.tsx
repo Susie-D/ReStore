@@ -5,7 +5,7 @@ import ProductList from "./ProductList";
 
 export default function Catalog() {
 
-const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Products[]>([]);
   const [error, setError] = useState(null);
 
 
@@ -15,7 +15,7 @@ const [products, setProducts] = useState<Products[]>([]);
       .then(data => setProducts(data))
       .catch(error => setError(error));
   }, [])
-    return <>
-        <ProductList products={products} />
-    </>
+  return (<>
+    {(error) ? <p>There an error in retrieving the inventory.</p> : <ProductList products={products} />}
+  </>)
 }
